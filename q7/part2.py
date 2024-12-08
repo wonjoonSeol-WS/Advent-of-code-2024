@@ -1,5 +1,5 @@
-filename = "q7/part1/input"
-# filename = "q7/part1/test"
+filename = "q7/input"
+# filename = "q7/test"
 
 from collections import defaultdict
 from math import log10, ceil, fmod
@@ -20,10 +20,9 @@ def is_possible(arr, target):
         res = recur(i + 1, curr * val) or recur(i + 1, curr + val)
 
         if curr > 0:
+            res |= recur(i + 1, int(f"{curr}{val}"))
+            # res |= recur(i + 1, (10 ** ceil(log10(val))) * curr + val) 
             # res |= recur(i + 1, (10 ** ceil(len(str(val)))) * curr + val) # correct
-            # res |= recur(i + 1, (10 ** ceil(log(val, 10))) * curr + val)  # wrong 97164197267598
-            res |= recur(i + 1, (10 ** ceil(log10(val))) * curr + val)   # wrong 97164197267598
-            # res |= recur(i + 1, int(f"{curr}{val}")) # correct
  
         cache[(i, curr)] = res
         return res

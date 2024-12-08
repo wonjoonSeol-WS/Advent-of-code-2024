@@ -1,5 +1,5 @@
-filename = "q7/part1/input"
-# filename = "q7/part1/test"
+filename = "q7/input"
+# filename = "q7/test"
 
 from collections import defaultdict
 
