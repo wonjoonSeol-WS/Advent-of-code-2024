@@ -21,8 +21,8 @@ def is_possible(arr, target):
 
         if curr > 0:
             res |= recur(i + 1, int(f"{curr}{val}"))
-            # res |= recur(i + 1, (10 ** ceil(log10(val))) * curr + val) 
-            # res |= recur(i + 1, (10 ** ceil(len(str(val)))) * curr + val) # correct
+            # res |= recur(i + 1, (10 ** ceil(log10(val + 1))) * curr + val) 
+            # res |= recur(i + 1, (10 ** ceil(len(str(val)))) * curr + val) 
  
         cache[(i, curr)] = res
         return res
