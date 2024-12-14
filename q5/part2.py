@@ -50,7 +50,6 @@ def correct_ordering(adj_list, arr):
 
 def process_input(filename):
     adj_list = defaultdict(set)
-    preq = defaultdict(set)
     res = 0
     with open(filename, "r") as f:
         string = f.read().strip()
