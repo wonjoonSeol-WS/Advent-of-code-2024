@@ -5,13 +5,6 @@ from time import time
 numeric_grid = [["7", "8", "9"], ["4", "5", "6"], ["1", "2", "3"], ["#", "0", "A"]]
 directional_grid = [["#", "^", "A"], ["<", "v", ">"]]
 
-# string_to_direction = {
-#     "^": (-1, 0),
-#     "v": (1, 0),
-#     ">": (0, 1),
-#     "<": (0, -1),
-# }
-
 numeric_start = (3, 2)
 directional_start = (0, 2)
 
@@ -73,22 +66,6 @@ def calculate_score(expected, len):
     return value * len
 
 
-def convert_to_string(res):
-    ans = []
-    for val in res:
-        if val == (-1, 0):
-            ans.append("^")
-        elif val == (1, 0):
-            ans.append("v")
-        elif val == (0, -1):
-            ans.append("<")
-        elif val == (0, 1):
-            ans.append(">")
-        else:
-            ans.append(val)
-    print("".join(ans))
-
-
 def find_route(grid, expected, cache, start):
     res = [""]
     start = grid[start[0]][start[1]]
@@ -100,7 +77,6 @@ def find_route(grid, expected, cache, start):
                 new_res.append(route + solution)
         start = char
         res = new_res
-        # print("matching", char, res)
     return res
 
 
@@ -113,7 +89,6 @@ def find_shortest(expected, cache, directional_cache, directional_start, depth):
         return cache[key]
 
     res = 0
-    # print(expected, expected.split("A"))
     for part in expected.split("A")[:-1]:  # need to ignore last A in split
         part = part + "A"
         solutions = find_route(directional_grid, part, directional_cache, directional_start)
@@ -128,24 +103,16 @@ def find_shortest(expected, cache, directional_cache, directional_start, depth):
 def process_input(filename):
     numeric_cache = cache_result(numeric_grid)
     directional_cache = cache_result(directional_grid)
-    # for arr in numeric_cache[('7', '0')]:
-    # print("numeric[7][0]", arr)
-    print("finished caching")
-    # print(find_route(directional_grid, ["<", "A"], directional_cache, directional_start))
-
     cache = {}
     score = 0
     with open(filename, "r") as f:
         while line := f.readline().strip():
-            print("test", line)
             res = find_route(numeric_grid, line, numeric_cache, numeric_start)
 
             min_total = float("inf")
             for path in res:
                 min_total = min(min_total, find_shortest(path, cache, directional_cache, directional_start, depth=2))
-            # print("min", min_total)
             score += calculate_score(line, min_total)
-            # break
     print(score)
 
 
