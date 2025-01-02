@@ -28,7 +28,7 @@ def process_input(filename):
                 res += int(arr[len(arr) // 2])
     return res
 
+
 if __name__ == "__main__":
     print(process_input("q5/test"))
     print(process_input("q5/input"))
-

@@ -2,11 +2,14 @@ from math import log10
 
 
 def get_input(filename):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         res = list(map(int, f.read().split(" ")))
     return res
 
+
 cache = {}
+
+
 def blink(val, n):
     if (val, n) in cache:
         return cache[(val, n)]
@@ -30,5 +33,5 @@ if __name__ == "__main__":
     print(sum([blink(val, 1) for val in data]))
 
     data = get_input("q11/input")
-    print(sum([blink(val, 25) for val in data])) 
-    print(sum([blink(val, 75) for val in data])) 
+    print(sum([blink(val, 25) for val in data]))
+    print(sum([blink(val, 75) for val in data]))

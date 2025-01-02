@@ -29,13 +29,23 @@ def find_words(grid):
     ret = 0
     for i in range(m):
         for j in range(n):
-            for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]:
+            for dx, dy in [
+                (1, 0),
+                (-1, 0),
+                (0, 1),
+                (0, -1),
+                (1, 1),
+                (-1, -1),
+                (1, -1),
+                (-1, 1),
+            ]:
                 ret += helper(i, j, 0, dx, dy)
     return ret
 
+
 if __name__ == "__main__":
-    grid = get_input("q4/test") 
+    grid = get_input("q4/test")
     print(find_words(grid))
 
-    grid = get_input("q4/input") 
+    grid = get_input("q4/input")
     print(find_words(grid))

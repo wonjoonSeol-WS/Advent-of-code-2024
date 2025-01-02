@@ -11,14 +11,16 @@ def get_input(filename):
             grid.append(row)
     return grid
 
-expected = {"M", "S"} 
+
+expected = {"M", "S"}
+
 
 def find_words(grid):
     m = len(grid)
     n = len(grid[0])
 
     def helper(i, j):
-        expected = {"M", "S"} 
+        expected = {"M", "S"}
         diag_one = set()
         diag_two = set()
         diag_one.add(grid[i - 1][j - 1])
@@ -39,9 +41,10 @@ def find_words(grid):
             ret += helper(i, j)
     return ret
 
+
 if __name__ == "__main__":
-    grid = get_input("q4/test") 
+    grid = get_input("q4/test")
     print(find_words(grid))
 
-    grid = get_input("q4/input") 
+    grid = get_input("q4/input")
     print(find_words(grid))

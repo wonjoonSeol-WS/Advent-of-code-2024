@@ -8,7 +8,7 @@ class Node:
 
 
 def get_input(filename):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         res = list(map(int, f.read().split(" ")))
     return res
 
@@ -47,7 +47,6 @@ def blinks(data, n):
         res.append(dummy.val)
     print(res)
     return len(res)
-
 
 
 if __name__ == "__main__":

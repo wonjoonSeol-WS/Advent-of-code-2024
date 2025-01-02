@@ -26,7 +26,7 @@ def is_possible(arr, target):
     #         return False
     #     if (i, curr) in cache:
     #         return cache[(i, curr)]
-        
+
     #     val = arr[i]
     #     res = recur(i + 1, curr * val) or recur(i + 1, curr + val)
     #     cache[(i, curr)] = res
@@ -45,4 +45,3 @@ with open(filename) as f:
             res += ans
 
 print(res)  # 3245122495150
-

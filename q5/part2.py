@@ -21,7 +21,7 @@ def correct_ordering(adj_list, arr):
                 continue
             if num2 in adj_list[num]:
                 new_adj_list[num].add(num2)
-    
+
     res = []
     visited = set()
     cycle = set()
@@ -31,7 +31,7 @@ def correct_ordering(adj_list, arr):
             return False
         if node in visited:
             return True
-        
+
         cycle.add(node)
         for adj_node in new_adj_list[node]:
             if not dfs(adj_node):
@@ -47,6 +47,7 @@ def correct_ordering(adj_list, arr):
     # alt kanh's algorithm
     # return res[::-1]
     return res[::-1]
+
 
 def process_input(filename):
     adj_list = defaultdict(set)
@@ -68,7 +69,7 @@ def process_input(filename):
                 res += int(arr[len(arr) // 2])
     return res
 
+
 if __name__ == "__main__":
     # print(process_input("q5/test"))
     print(process_input("q5/input"))
-

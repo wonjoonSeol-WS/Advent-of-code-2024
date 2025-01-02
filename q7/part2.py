@@ -15,17 +15,18 @@ def is_possible(arr, target):
             return False
         if (i, curr) in cache:
             return cache[(i, curr)]
-        
+
         val = arr[i]
         res = recur(i + 1, curr * val) or recur(i + 1, curr + val)
 
         if curr > 0:
             res |= recur(i + 1, int(f"{curr}{val}"))
-            # res |= recur(i + 1, (10 ** ceil(log10(val + 1))) * curr + val) 
-            # res |= recur(i + 1, (10 ** ceil(len(str(val)))) * curr + val) 
- 
+            # res |= recur(i + 1, (10 ** ceil(log10(val + 1))) * curr + val)
+            # res |= recur(i + 1, (10 ** ceil(len(str(val)))) * curr + val)
+
         cache[(i, curr)] = res
         return res
+
     return recur(0, 0)
 
 
@@ -39,7 +40,7 @@ def is_possible_dp(arr, target):
             next_dp[t + num] |= val
             next_dp[t * num] |= val
             next_dp[int(f"{t}{num}")] |= val
-        dp = next_dp 
+        dp = next_dp
     return dp[target]
 
 
@@ -53,10 +54,10 @@ def is_possible_backward(arr, target):
             next_dp[t - num] |= val
             if t % num == 0:
                 next_dp[t // num] |= val
-            tens = 10 ** len(str(num)) 
+            tens = 10 ** len(str(num))
             if fmod(t, tens) == num:
                 next_dp[t // tens] |= val
-        dp = next_dp 
+        dp = next_dp
     return dp[0]
 
 
@@ -71,4 +72,3 @@ with open(filename) as f:
             res += ans
 
 print(res)  # 105517128211543
-
